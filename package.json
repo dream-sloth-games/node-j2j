@@ -1,0 +1,42 @@
+{
+  "name": "j2j",
+  "version": "0.1.0",
+  "description": "CLI tool to convert JS to JSON",
+  "main": "j2j.js",
+  "keywords": [
+    "cli",
+    "command",
+    "line",
+    "js",
+    "javascript",
+    "object",
+    "array",
+    "json"
+  ],
+  "bin": {
+    "j2j": "j2j.js"
+  },
+  "preferGlobal": true,
+  "author": "Christopher Hiller <chiller@badwing.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cardinal": "^0.4.4",
+    "defaults": "^1.0.0",
+    "graceful-fs": "^3.0.2",
+    "q": "^1.0.1",
+    "sandbox": "^0.8.6",
+    "ttycolor": "^0.8.10",
+    "yargs": "git://github.com/boneskull/yargs#nylen"
+  },
+  "devDependencies": {
+    "ink-docstrap": "^0.4.12",
+    "jsdoc": "^3.3.0-alpha9",
+    "jshint": "^2.5.5",
+    "jshint-stylish": "^0.4.0"
+  },
+  "scripts": {
+    "jsdoc": "jsdoc -c jsdoc.conf.json -t node_modules/ink-docstrap/template j2j.js",
+    "jshint": "jshint j2j.js --reporter node_modules/jshint-stylish/stylish.js",
+    "jsdox": "jsdox j2j.js && ls output/j2j.md"
+  }
+}

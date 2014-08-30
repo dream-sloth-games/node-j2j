@@ -1,0 +1,28 @@
+{
+  "tags": {
+    "allowUnknownTags": false
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "dateFormat": "ddd MMM Do YYYY",
+    "outputSourceFiles": false,
+    "systemName": "j2j",
+    "footer": "",
+    "copyright": "j2j | Copyright &copy; 2014 Christopher Hiller. | Licensed MIT",
+    "navType": "vertical",
+    "theme": "spacelab",
+    "linenums": true,
+    "collapseSymbols": false,
+    "inverseNav": true,
+    "highlightTutorialCode": true
+  },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true
+  }
+}
