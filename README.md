@@ -108,7 +108,7 @@ it will just give you output, which is a shortcut for `JSON.stringify()`.
 
 **callback**: `function`, Optional callback if you don't want to use Promises.
 
-**Returns**: `Promise`, See [Q docs](/kriskowal/q/wiki/API-Reference)
+**Returns**: `Promise`, See [Q docs](https://github.com/kriskowal/q/wiki/API-Reference)
 
 **Example**:
 ```js
@@ -134,7 +134,7 @@ If you pass something like `{foo: 'bar'}` into `JSON.stringify()`, it will of co
 
 **callback**: `function`, Callback to call with results from evaluation, if you don't like Promises.
 
-**Returns**: `Promise`, See [Q docs](/kriskowal/q/wiki/API-Reference)
+**Returns**: `Promise`, See [Q docs](https://github.com/kriskowal/q/wiki/API-Reference)
 
 
 ### j2j.output(o, opts)
@@ -185,7 +185,7 @@ Used by CLI.  Exits with nonzero code if error and `callback` is NOT specified.
 
 **callback**: `function`, Optional callback if you don't want to use Promises.
 
-**Returns**: `Promise`, See [Q docs](/kriskowal/q/wiki/API-Reference)
+**Returns**: `Promise`, See [Q docs](https://github.com/kriskowal/q/wiki/API-Reference)
 
 ## Author
 
