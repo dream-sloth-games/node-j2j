@@ -104,7 +104,7 @@ it will just give you output, which is a shortcut for `JSON.stringify()`.
 
 **input**: `string`, String to parse
 
-**opts**: `Object`, See [options](#j2j.options)
+**opts**: `Object`, See [options](#j2joptionsopts-optsdebug-optsindent-optsno-color-optsline-nos)
 
 **callback**: `function`, Optional callback if you don't want to use Promises.
 
@@ -130,7 +130,7 @@ If you pass something like `{foo: 'bar'}` into `JSON.stringify()`, it will of co
 
 **s**: `String`, Raw string to evaluate
 
-**opts**: `Object | function`, See [options](#j2j.options).  Callback if function.
+**opts**: `Object | function`, See [options](#j2joptionsopts-optsdebug-optsindent-optsno-color-optsline-nos).  Callback if function.
 
 **callback**: `function`, Callback to call with results from evaluation, if you don't like Promises.
 
@@ -147,7 +147,7 @@ This function is synchronous.
 
 **o**: `Object | Array | string | number`, Thing to stringify and output.
 
-**opts**: `Object`, Options.  See [options](#j2j.options)
+**opts**: `Object`, Options.  See [options](#j2joptionsopts-optsdebug-optsindent-optsno-color-optsline-nos)
 
 **Returns**: `string`
 
@@ -181,7 +181,7 @@ Used by CLI.  Exits with nonzero code if error and `callback` is NOT specified.
 
 **input**: `string`, String to parse
 
-**opts**: `Object | function`, See [options](#j2j.options).  Callback if function.
+**opts**: `Object | function`, See [options](#j2joptionsopts-optsdebug-optsindent-optsno-color-optsline-nos).  Callback if function.
 
 **callback**: `function`, Optional callback if you don't want to use Promises.
 
