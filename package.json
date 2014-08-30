@@ -1,6 +1,6 @@
 {
   "name": "j2j",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI tool to convert JS to JSON",
   "main": "j2j.js",
   "keywords": [
