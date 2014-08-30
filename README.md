@@ -6,6 +6,23 @@ It works best on plain ol' JavaScript objects, but anything that [`JSON.stringif
 
 I wrote this because I often need to convert fairly static JS objects into `.json` files.  For example, taking the contents of a `Gruntfile.js`'s config and putting them into individual task files (a la [load-grunt-config](https://www.npmjs.org/package/load-grunt-config)).
 
+Alternatively, you could do something like this by pasting the JS into a `node` console:
+
+```
+$ node
+> console.log(JSON.stringify({
+...   main: [
+...     'Gruntfile.js',
+...     '<%= mochacov.options.files %>'
+...   ],
+...   options: {
+.....     jshintrc: true
+.....   }
+... }, null, 2));
+```
+
+...and copy/paste the output.  However, I wanted something automated (which I can integrate into my IDE).
+
 This tool is *not* for converting 1,000 lines of JavaScript into JSON, though you could try.
  
 ## Example
