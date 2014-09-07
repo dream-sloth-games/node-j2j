@@ -1,4 +1,3 @@
 jsdoc.conf.json
-.editorconfig
-.jshintrc
+**/.*
 
