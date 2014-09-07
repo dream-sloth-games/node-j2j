@@ -1,5 +1,7 @@
 # j2j
 
+[![NPM](https://nodei.co/npm/j2j.png)](https://nodei.co/npm/j2j/)
+
 **j2j** is a command-line utility to convert JavaScript to JSON.
 
 It works best on plain ol' JavaScript objects, but anything that [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) consumes should work as well.
