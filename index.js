@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * @file Attempts to convert your JavaScript to JSON.
  * @author Christopher Hiller <chiller@badwing.com>
