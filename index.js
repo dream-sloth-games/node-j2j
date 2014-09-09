@@ -15,6 +15,10 @@
 'use strict';
 
 var defaults = require('defaults'),
+  chalk = require('chalk'),
+  error = chalk.red.bold,
+  info = chalk.blue,
+  warn = chalk.yellow,
 
   /**
    * @description Default # of spaces to indent JSON output
@@ -70,7 +74,7 @@ var parse = function parse(s, opts, callback) {
 
   opts = options(opts);
 
-  opts.debug && console.info('Executing:\n' + fn);
+  opts.debug && console.info(info('Executing:\n' + fn));
 
   // log the evaluated string, get the evaluated type, and trap them.
   sandbox.run(fn, function (info) {
@@ -78,7 +82,7 @@ var parse = function parse(s, opts, callback) {
       return dfrd.resolve(info.console[0]);
     }
     opts.debug &&
-    console.info('Sandbox output: \n' + stringify(info, null, parseInt(opts.indent, 10)));
+    console.info(info('Sandbox output: \n' + stringify(info, null, parseInt(opts.indent, 10))));
     return dfrd.reject('input evaluated to ' + info.result + ', which is no good.');
   });
 
@@ -101,10 +105,14 @@ var output = function output(o, opts) {
 
   out = stringify(o, null, parseInt(opts.indent, 10));
   if (process.stdout.isTTY && !opts['no-color'] && !opts.output) {
-    out = require('cardinal').highlight(out, {
-      json: true,
-      linenos: opts['line-nos']
-    });
+    try {
+      out = require('cardinal').highlight(out, {
+        json: true,
+        linenos: opts['line-nos']
+      });
+    } catch (e) {
+      console.warn(warn('Could not highlight!  Exception: "%s"'), e.message);
+    }
   }
   return out;
 };
@@ -149,8 +157,7 @@ var write = function write(input, opts, callback) {
         return output(s, opts);
       }, function (err) {
         if (opts.debug) {
-          !opts['no-color'] && require('ttycolor').defaults();
-          console.error(err);
+          console.error(error(err));
         }
         throw new Error('cannot coerce input into anything JSON.stringify() can handle');
       })
@@ -160,55 +167,14 @@ var write = function write(input, opts, callback) {
         }
         process.stdout.write(out);
       }, function (err) {
-        require('ttycolor').defaults();
-        console.error(err);
+        console.error(error(err));
         !callback && process.exit(1);
       });
   }(input, opts))
     .nodeify(typeof opts === 'function' ? opts : callback);
 };
 
-/**
- * @summary Parses and generates output from a string.  Fulfills with output.
- * @description For programmatic use.  If for some reason you pass it a non-string,
- * it will just give you output, which is a shortcut for `JSON.stringify()`.
- * @param {string} input String to parse
- * @param {Object} [opts] See {@link module:j2j.options}
- * @param {Function} [callback] Optional callback if you don't want to use Promises.
- * @see module:j2j.write
- * @alias module:j2j
- * @returns {Promise}
- * @example
- * var j2j = require('j2j');
- *
- * j2j("{foo: 'bar', baz: 2}", {indent: false})
- *   .then(function(output) {
- *     expect(output).to.equal('{"foo":"bar","baz":2}');
- *   });
- */
-var j2j = function j2j(input, opts, callback) {
-  var Q = require('q');
-  return Q(function (input, opts) {
-    if (!input) {
-      throw new Error('input parameter cannot be empty');
-    }
-    opts = options(opts);
-    if (typeof input === 'string') {
-      return output(input, opts);
-    }
-    return parse(input, opts)
-      .then(function (o) {
-        return output(o, opts);
-      });
-  }(input, opts))
-    .nodeify(typeof opts === 'function' ? opts : callback);
-};
-j2j.parse = parse;
-j2j.output = output;
-j2j.write = write;
-j2j.options = options;
-
-var main = function main() {
+var _main = function _main() {
   var input,
     stdin,
     chunks = [],
@@ -278,8 +244,45 @@ var main = function main() {
   }
 };
 
-require.main === module && main();
+/**
+ * @summary Parses and generates output from a string.  Fulfills with output.
+ * @description For programmatic use.  If for some reason you pass it a non-string,
+ * it will just give you output, which is a shortcut for `JSON.stringify()`.
+ * @param {string} input String to parse
+ * @param {Object} [opts] See {@link module:j2j.options}
+ * @param {Function} [callback] Optional callback if you don't want to use Promises.
+ * @see module:j2j.write
+ * @alias module:j2j
+ * @returns {Promise}
+ * @example
+ * var j2j = require('j2j');
+ *
+ * j2j("{foo: 'bar', baz: 2}", {indent: false})
+ *   .then(function(output) {
+ *     expect(output).to.equal('{"foo":"bar","baz":2}');
+ *   });
+ */
+var j2j = function j2j(input, opts, callback) {
+  var Q = require('q');
+  return Q(function (input, opts) {
+    if (!input) {
+      throw new Error('input parameter cannot be empty');
+    }
+    opts = options(opts);
+    if (typeof input === 'string') {
+      return output(input, opts);
+    }
+    return parse(input, opts)
+      .then(function (o) {
+        return output(o, opts);
+      });
+  }(input, opts))
+    .nodeify(typeof opts === 'function' ? opts : callback);
+};
+j2j.parse = parse;
+j2j.output = output;
+j2j.write = write;
+j2j.options = options;
+j2j._main = _main;
 
 module.exports = j2j;
-
-

@@ -1,8 +1,8 @@
 {
   "name": "j2j",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "CLI tool to convert JS to JSON",
-  "main": "j2j.js",
+  "main": "index.js",
   "keywords": [
     "cli",
     "command",
@@ -15,18 +15,18 @@
   ],
   "repository": "https://github.com/boneskull/node-j2j.git",
   "bin": {
-    "j2j": "j2j.js"
+    "j2j": "bin/j2j.js"
   },
   "preferGlobal": true,
   "author": "Christopher Hiller <chiller@badwing.com>",
   "license": "MIT",
   "dependencies": {
     "cardinal": "^0.4.4",
+    "chalk": "^0.5.1",
     "defaults": "^1.0.0",
     "graceful-fs": "^3.0.2",
     "q": "^1.0.1",
     "sandbox": "^0.8.6",
-    "ttycolor": "^0.8.10",
     "yargs": "git://github.com/boneskull/yargs#nylen"
   },
   "devDependencies": {
