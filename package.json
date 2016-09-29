@@ -24,7 +24,7 @@
     "cardinal": "^0.4.4",
     "chalk": "^0.5.1",
     "defaults": "^1.0.0",
-    "graceful-fs": "^3.0.2",
+    "graceful-fs": "^4.1.9",
     "q": "^1.0.1",
     "sandbox": "^0.8.6",
     "yargs": "git://github.com/boneskull/yargs#nylen"
