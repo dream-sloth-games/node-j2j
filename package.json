@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "ink-docstrap": "^0.4.12",
-    "jsdoc": "^3.3.0-alpha9",
+    "jsdoc": "^3.4.2",
     "jshint": "^2.5.5",
     "jshint-stylish": "^0.4.0"
   },
