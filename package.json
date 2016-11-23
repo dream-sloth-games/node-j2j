@@ -21,19 +21,19 @@
   "author": "Christopher Hiller <chiller@badwing.com>",
   "license": "MIT",
   "dependencies": {
-    "cardinal": "^0.4.4",
-    "chalk": "^0.5.1",
+    "cardinal": "^1.0.0",
+    "chalk": "^1.1.3",
     "defaults": "^1.0.0",
-    "graceful-fs": "^3.0.2",
+    "graceful-fs": "^4.1.11",
     "q": "^1.0.1",
     "sandbox": "^0.8.6",
     "yargs": "git://github.com/boneskull/yargs#nylen"
   },
   "devDependencies": {
-    "ink-docstrap": "^0.4.12",
+    "ink-docstrap": "^1.3.0",
     "jsdoc": "^3.3.0-alpha9",
     "jshint": "^2.5.5",
-    "jshint-stylish": "^0.4.0"
+    "jshint-stylish": "^2.2.1"
   },
   "scripts": {
     "jsdoc": "jsdoc -c jsdoc.conf.json -t node_modules/ink-docstrap/template j2j.js",
